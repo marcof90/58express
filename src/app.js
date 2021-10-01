@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 
 //rutas
-app.use('/items/', indexRoutes);
+app.use('/', indexRoutes);
 
 //inicializacion del server
 app.listen(app.get('port'), ()=>{
