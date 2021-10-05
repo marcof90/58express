@@ -3,9 +3,10 @@ const router = express.Router();
 const authService = require('../services/auth.service');
 const Item = require('../models/item');
 const User = require('../models/user');
+const Auth = require('../middlewares/authentication')
 
 //routes
-router.get('/', async (req, res)=>{
+router.get('/', Auth , async (req, res)=>{
     const items = await Item.find();
     res.send(items); 
 });
@@ -27,7 +28,7 @@ router.post('/login', async (req, res)=>{
     try {
         const { email, password } = req.body;
         if(!email || !password){
-            return res.status(400).json('email and password required');
+            res.status(400).json('email and password required');
         }
         let token = await authService.login(req.body);
         if(token){

@@ -4,7 +4,7 @@ const aes = require('../helpers/aes.cipher');
 
 const authService = {
     signToken: async function(id){
-        return jwt.sign({ id }, 'my App', {
+        return jwt.sign({ id }, 'my app', {
             expiresIn: 60 * 60 * 24 * 365
         });
     },
